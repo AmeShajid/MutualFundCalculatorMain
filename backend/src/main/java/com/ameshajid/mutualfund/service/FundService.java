@@ -1,6 +1,5 @@
 package com.ameshajid.mutualfund.service;
 
-//we will be using a list
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +13,8 @@ public class FundService {
     public List<Fund> getAllFunds() {
 
         //List to hold all the funds we want to return
-        List<Fund> funds = new ArrayList<Fund>();
+        List<Fund> funds = new ArrayList<>();
 
-        //Hardcoded mutual funds
         funds.add(new Fund("VSMPX", "Vanguard Total Stock Market Index Fund;Institutional Plus"));
         funds.add(new Fund("FXAIX", "Fidelity 500 Index Fund"));
         funds.add(new Fund("VFIAX", "Vanguard 500 Index Fund;Admiral"));
