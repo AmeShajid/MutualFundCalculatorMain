@@ -6,21 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ameshajid.mutualfund.model.Fund;
-import com.ameshajid.mutualfund.service.FundService;
-
 @RestController
 @RequestMapping("/api")
-public class FundController {
+public class Fund {
 
-    private final FundService fundService;
+    private final com.ameshajid.mutualfund.service.Fund fundService;
 
-    public FundController(FundService fundService) {
+    public Fund(com.ameshajid.mutualfund.service.Fund fundService) {
         this.fundService = fundService;
     }
 
     @GetMapping("/funds")
-    public List<Fund> getFunds() {
+    public List<com.ameshajid.mutualfund.model.Fund> getFunds() {
         return fundService.getAllFunds();
     }
 }

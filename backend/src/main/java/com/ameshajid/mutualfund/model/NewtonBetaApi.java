@@ -1,13 +1,13 @@
 package com.ameshajid.mutualfund.model;
 
-public class NewtonBetaApiResponse {
+public class NewtonBetaApi {
 
     private String status;
     private String statusMessage;
     private Double data;
     private String disclaimer;
 
-    public NewtonBetaApiResponse() {
+    public NewtonBetaApi() {
     }
 
     public String getStatus() {
