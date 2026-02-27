@@ -18,6 +18,7 @@ public class NewtonBetaApiResponse {
     //so this is called a no argument constructor for JSON deserialization
     //Spring needs this to create the object when parsing JSON
     public NewtonBetaApiResponse() {
+
     }
 
     // This getter returns the API status
