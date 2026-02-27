@@ -4,13 +4,13 @@ import org.springframework.stereotype.Service;
 import com.ameshajid.mutualfund.model.PredictionResponse;
 
 @Service
-public class Prediction {
+public class PredictionService {
 
     private static final double RISK_FREE_RATE = 0.045; // Update as needed
-    private final NewtonBeta newtonBetaService;
-    private final YahooReturn yahooReturnService;
+    private final NewtonBetaService newtonBetaService;
+    private final YahooReturnService yahooReturnService;
 
-    public Prediction(NewtonBeta newtonBetaService, YahooReturn yahooReturnService) {
+    public PredictionService(NewtonBetaService newtonBetaService, YahooReturnService yahooReturnService) {
         this.newtonBetaService = newtonBetaService;
         this.yahooReturnService = yahooReturnService;
     }

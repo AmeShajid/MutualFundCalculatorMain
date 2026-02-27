@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ameshajid.mutualfund.model.PredictionRequest;
 import com.ameshajid.mutualfund.model.PredictionResponse;
+import com.ameshajid.mutualfund.service.PredictionService;
 
 @RestController
 @RequestMapping("/api")
-public class Prediction {
+public class PredictionController {
 
-    private final com.ameshajid.mutualfund.service.Prediction predictionService;
+    private final PredictionService predictionService;
 
-    public Prediction(com.ameshajid.mutualfund.service.Prediction predictionService) {
+    public PredictionController(PredictionService predictionService) {
         this.predictionService = predictionService;
     }
 

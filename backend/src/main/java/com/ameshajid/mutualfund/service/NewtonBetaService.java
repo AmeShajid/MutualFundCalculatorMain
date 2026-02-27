@@ -6,10 +6,10 @@ import java.nio.charset.StandardCharsets;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.ameshajid.mutualfund.model.NewtonBetaApi;
+import com.ameshajid.mutualfund.model.NewtonBetaApiResponse;
 
 @Service
-public class NewtonBeta {
+public class NewtonBetaService {
 
     private static final String BASE_URL = "https://api.newtonanalytics.com/stock-beta/";
     private final RestTemplate restTemplate = new RestTemplate();
@@ -42,7 +42,7 @@ public class NewtonBeta {
                 + "&interval=" + intervalEncoded
                 + "&observations=" + observations;
 
-        NewtonBetaApi response = restTemplate.getForObject(url, NewtonBetaApi.class);
+        NewtonBetaApiResponse response = restTemplate.getForObject(url, NewtonBetaApiResponse.class);
 
         if (response == null || response.getData() == null) {
             throw new RuntimeException("Newton API returned no beta data");
