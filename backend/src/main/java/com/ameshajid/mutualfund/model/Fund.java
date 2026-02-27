@@ -8,6 +8,7 @@ public class Fund {
     //For springboot idk why we need an empty constructor
     public Fund() {
     }
+
     //Creating our objects
     public Fund(String symbol, String name) {
         this.symbol = symbol;
@@ -16,19 +17,23 @@ public class Fund {
 
     // Setter for symbol
     public String getSymbol() {
+
         return symbol;
     }
     // Setter for symbol
     public String getName() {
+
         return name;
     }
 
     // Getter for name
     public void setSymbol(String symbol) {
+
         this.symbol = symbol;
     }
     // Setter for name
     public void setName(String name) {
+
         this.name = name;
     }
 }
