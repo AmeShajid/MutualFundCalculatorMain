@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   error = '';
   fundsLoading = true;
   showMethodology = false;
+  submittedPrincipal: number | null = null;
+  submittedYears: number | null = null;
 
   constructor(private fundService: FundService) {}
 
@@ -50,6 +52,8 @@ export class AppComponent implements OnInit {
     this.loading = true;
     this.error = '';
     this.result = null;
+    this.submittedPrincipal = this.principal;
+    this.submittedYears = this.years;
 
     this.fundService.predict({
       ticker: this.selectedTicker,
@@ -61,7 +65,8 @@ export class AppComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = err.error?.message || err.error || 'Prediction failed. Please try again.';
+        const raw = err.error;
+        this.error = typeof raw === 'string' ? raw : raw?.message || err.message || 'Prediction failed. Please try again.';
         this.loading = false;
       }
     });
@@ -73,8 +78,8 @@ export class AppComponent implements OnInit {
   }
 
   get growthPercent(): number {
-    if (!this.result || !this.principal) return 0;
-    return ((this.result.futureValue - this.principal) / this.principal) * 100;
+    if (!this.result || !this.submittedPrincipal) return 0;
+    return ((this.result.futureValue - this.submittedPrincipal) / this.submittedPrincipal) * 100;
   }
 
   formatCurrency(value: number): string {
