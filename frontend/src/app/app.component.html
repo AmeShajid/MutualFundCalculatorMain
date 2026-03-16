@@ -1,0 +1,214 @@
+<!-- GS Header -->
+<header class="gs-header">
+  <div class="gs-header-inner">
+    <div class="gs-header-left">
+      <span class="gs-wordmark">Goldman Sachs</span>
+      <span class="gs-divider"></span>
+      <span class="gs-header-section">Engineering Summer</span>
+    </div>
+    <nav class="gs-nav">
+      <button type="button" class="gs-nav-link" [class.active]="!showMethodology" (click)="showMethodology = false">Calculator</button>
+      <button type="button" class="gs-nav-link" [class.active]="showMethodology" (click)="showMethodology = !showMethodology">Methodology</button>
+    </nav>
+  </div>
+</header>
+
+<!-- Methodology Explainer -->
+<div class="gs-methodology-banner" *ngIf="showMethodology">
+  <div class="gs-container">
+    <div class="gs-methodology-banner-inner">
+      <div class="gs-methodology-banner-content">
+        <h2>How This Calculator Works</h2>
+        <div class="gs-methodology-steps">
+          <div class="gs-methodology-step">
+            <span class="gs-step-num">1</span>
+            <div>
+              <h3>Fetch Beta (β)</h3>
+              <p>We pull the fund's beta from Newton Analytics — this measures how volatile the fund is relative to the S&P 500. A beta of 1.0 means it moves with the market; above 1.0 means more volatile, below means less.</p>
+            </div>
+          </div>
+          <div class="gs-methodology-step">
+            <span class="gs-step-num">2</span>
+            <div>
+              <h3>Get Market Return (R<sub>m</sub>)</h3>
+              <p>We fetch 1-year historical price data from Yahoo Finance and calculate the actual return rate: <span class="gs-mono">(last close − first close) / first close</span>.</p>
+            </div>
+          </div>
+          <div class="gs-methodology-step">
+            <span class="gs-step-num">3</span>
+            <div>
+              <h3>Apply CAPM Formula</h3>
+              <p>The Capital Asset Pricing Model gives us the expected return: <span class="gs-mono">r = R<sub>f</sub> + β × (R<sub>m</sub> − R<sub>f</sub>)</span>, where R<sub>f</sub> is the risk-free rate (4.5%, based on U.S. Treasury yields).</p>
+            </div>
+          </div>
+          <div class="gs-methodology-step">
+            <span class="gs-step-num">4</span>
+            <div>
+              <h3>Continuous Compounding</h3>
+              <p>Your future value is calculated as: <span class="gs-mono">FV = P × e<sup>(r × t)</sup></span>. This assumes returns compound continuously over your investment horizon.</p>
+            </div>
+          </div>
+        </div>
+        <p class="gs-methodology-banner-disclaimer">This is a simplified educational model. Actual investment returns depend on many factors not captured here. Past performance does not guarantee future results.</p>
+      </div>
+      <button class="gs-methodology-close" (click)="showMethodology = false" aria-label="Close methodology">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Page Title -->
+<section class="gs-page-title">
+  <div class="gs-container">
+    <h1 class="gs-title">Mutual Fund Investment Calculator</h1>
+    <p class="gs-subtitle">Capital Asset Pricing Model (CAPM) projection with real-time beta and market return data</p>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="gs-container"><div class="gs-rule"></div></div>
+
+<!-- Main Content -->
+<main class="gs-container gs-main">
+  <div class="gs-grid">
+
+    <!-- Left: Input Form -->
+    <section class="gs-panel">
+      <div class="gs-panel-header">
+        <h2 class="gs-panel-title">Investment Parameters</h2>
+      </div>
+
+      <div class="gs-panel-body">
+        <!-- Fund -->
+        <div class="gs-field">
+          <label class="gs-label" for="fund">Fund</label>
+          <div class="gs-select-wrap">
+            <select id="fund" class="gs-select" [(ngModel)]="selectedTicker" [disabled]="fundsLoading">
+              <option value="" disabled>{{ fundsLoading ? 'Loading...' : 'Select a mutual fund' }}</option>
+              <option *ngFor="let fund of funds" [value]="fund.symbol">
+                {{ fund.symbol }} — {{ fund.name }}
+              </option>
+            </select>
+            <svg class="gs-select-icon" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Principal -->
+        <div class="gs-field">
+          <label class="gs-label" for="principal">Initial Investment (USD)</label>
+          <div class="gs-input-wrap">
+            <span class="gs-input-prefix">$</span>
+            <input id="principal" class="gs-input gs-input--prefixed" type="number" [(ngModel)]="principal" placeholder="10,000" min="1" />
+          </div>
+        </div>
+
+        <!-- Years -->
+        <div class="gs-field">
+          <label class="gs-label" for="years">Time Horizon (Years)</label>
+          <input id="years" class="gs-input" type="number" [(ngModel)]="years" placeholder="5" min="1" max="50" />
+        </div>
+
+        <!-- Actions -->
+        <div class="gs-actions">
+          <button class="gs-btn gs-btn--primary" (click)="predict()" [disabled]="!formValid || loading">
+            <span *ngIf="!loading">Calculate</span>
+            <span *ngIf="loading" class="gs-btn-loading">
+              <span class="gs-spinner"></span>
+              Calculating...
+            </span>
+          </button>
+          <button class="gs-btn gs-btn--secondary" (click)="reset()" *ngIf="result">Clear</button>
+        </div>
+
+        <!-- Error -->
+        <div class="gs-alert gs-alert--error" *ngIf="error">
+          <svg class="gs-alert-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4M8 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>{{ error }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: Results -->
+    <section class="gs-panel gs-panel--results" *ngIf="result">
+      <div class="gs-panel-header">
+        <h2 class="gs-panel-title">Projection Output</h2>
+      </div>
+
+      <div class="gs-panel-body">
+        <!-- Primary result -->
+        <div class="gs-result-primary">
+          <div class="gs-result-label">Projected Future Value</div>
+          <div class="gs-result-amount">{{ formatCurrency(result.futureValue) }}</div>
+          <div class="gs-result-badge" [class.positive]="growthPercent >= 0" [class.negative]="growthPercent < 0">
+            {{ growthPercent >= 0 ? '+' : '' }}{{ growthPercent.toFixed(2) }}%
+          </div>
+        </div>
+
+        <div class="gs-rule"></div>
+
+        <!-- Data table -->
+        <table class="gs-table">
+          <tbody>
+            <tr>
+              <td class="gs-table-label">Initial Investment</td>
+              <td class="gs-table-value">{{ formatCurrency(submittedPrincipal!) }}</td>
+            </tr>
+            <tr>
+              <td class="gs-table-label">Net Gain / (Loss)</td>
+              <td class="gs-table-value" [class.gs-positive]="result.futureValue - submittedPrincipal! >= 0" [class.gs-negative]="result.futureValue - submittedPrincipal! < 0">{{ formatCurrency(result.futureValue - submittedPrincipal!) }}</td>
+            </tr>
+            <tr>
+              <td class="gs-table-label">Beta (β)</td>
+              <td class="gs-table-value">{{ result.beta.toFixed(4) }}</td>
+            </tr>
+            <tr>
+              <td class="gs-table-label">Expected Market Return</td>
+              <td class="gs-table-value">{{ formatPercent(result.expectedReturn) }}</td>
+            </tr>
+            <tr>
+              <td class="gs-table-label">Risk-Free Rate</td>
+              <td class="gs-table-value">{{ formatPercent(result.riskFreeRate) }}</td>
+            </tr>
+            <tr>
+              <td class="gs-table-label">Investment Period</td>
+              <td class="gs-table-value">{{ submittedYears }} {{ submittedYears === 1 ? 'Year' : 'Years' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="gs-rule"></div>
+
+        <!-- Methodology note -->
+        <div class="gs-methodology">
+          <h3 class="gs-methodology-title">Methodology</h3>
+          <p>Future value calculated using continuous compounding: <span class="gs-mono">FV = P × e^(r × t)</span></p>
+          <p>Where <span class="gs-mono">r</span> is derived from the CAPM: <span class="gs-mono">r = R_f + β(R_m − R_f)</span></p>
+          <p class="gs-disclaimer">Past performance does not guarantee future results. Beta sourced from Newton Analytics. Market returns sourced from Yahoo Finance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholder when no results -->
+    <section class="gs-panel gs-panel--empty" *ngIf="!result">
+      <div class="gs-panel-body gs-empty-state">
+        <svg class="gs-empty-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M4 18h40M16 8v10M32 8v10" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 28l6-4 6 6 6-8 6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="gs-empty-text">Configure parameters and calculate to view projection results</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="gs-footer">
+  <div class="gs-container gs-footer-inner">
+    <span class="gs-footer-wordmark">Goldman Sachs</span>
+    <span class="gs-footer-text">Engineering Summer — Mutual Fund Calculator</span>
+    <span class="gs-footer-text gs-footer-legal">For educational purposes only. Not investment advice.</span>
+  </div>
+</footer>

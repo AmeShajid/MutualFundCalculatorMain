@@ -1,0 +1,688 @@
+/* ============================================
+   Goldman Sachs Design System — Component
+   ============================================ */
+
+/* ---------- Header ---------- */
+.gs-header {
+  background: var(--gs-brand-blue);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.gs-header-inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gs-wordmark {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.gs-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.gs-header-section {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.gs-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.gs-nav-link {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 14px 0;
+  border-bottom: 3px solid transparent;
+  transition: color var(--gs-duration) var(--gs-ease-in),
+              border-color var(--gs-duration) var(--gs-ease-in);
+}
+
+.gs-nav-link:hover {
+  color: #fff;
+}
+
+.gs-nav-link.active {
+  color: #fff;
+  font-weight: 700;
+  border-bottom-color: #fff;
+}
+
+/* ---------- Methodology Banner ---------- */
+.gs-methodology-banner {
+  background: var(--gs-gray-90);
+  color: #fff;
+  overflow: hidden;
+  animation: gs-slide-down 0.3s var(--gs-ease-in);
+}
+
+@keyframes gs-slide-down {
+  from { max-height: 0; opacity: 0; }
+  to { max-height: 800px; opacity: 1; }
+}
+
+.gs-methodology-banner-inner {
+  display: flex;
+  gap: 24px;
+  padding: 32px 0;
+  align-items: flex-start;
+}
+
+.gs-methodology-banner-content {
+  flex: 1;
+}
+
+.gs-methodology-banner-content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.gs-methodology-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.gs-methodology-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.gs-step-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: var(--gs-brand-blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.gs-methodology-step h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.gs-methodology-step p {
+  font-size: 13px;
+  color: var(--gs-gray-40);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.gs-methodology-step .gs-mono {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--gs-brand-blue);
+}
+
+.gs-methodology-banner-disclaimer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--gs-gray-50);
+  font-style: italic;
+}
+
+.gs-methodology-close {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--gs-radius);
+  cursor: pointer;
+  padding: 8px;
+  color: var(--gs-gray-40);
+  transition: color var(--gs-duration), border-color var(--gs-duration);
+  flex-shrink: 0;
+}
+
+.gs-methodology-close:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.gs-methodology-close svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* ---------- Page Title ---------- */
+.gs-page-title {
+  padding: var(--gs-space-lg) 0 var(--gs-space-md);
+}
+
+.gs-title {
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--gs-text-bold);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.gs-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gs-text-subtle);
+  line-height: 1.5;
+}
+
+/* ---------- Container ---------- */
+.gs-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ---------- Rule ---------- */
+.gs-rule {
+  height: 1px;
+  background: var(--gs-gray-20);
+  border: none;
+  margin: 0;
+}
+
+/* ---------- Main ---------- */
+.gs-main {
+  padding-top: var(--gs-space-md);
+  padding-bottom: var(--gs-space-xl);
+}
+
+.gs-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--gs-space-md);
+  align-items: start;
+}
+
+/* ---------- Panel ---------- */
+.gs-panel {
+  background: var(--gs-gray-100);
+  border: 1px solid var(--gs-gray-20);
+  border-radius: var(--gs-radius);
+  box-shadow: var(--gs-shadow-10);
+}
+
+.gs-panel-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--gs-gray-20);
+}
+
+.gs-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gs-text-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0;
+}
+
+.gs-panel-body {
+  padding: 24px;
+}
+
+/* ---------- Fields ---------- */
+.gs-field {
+  margin-bottom: 24px;
+}
+
+.gs-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gs-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.gs-input,
+.gs-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gs-text-bold);
+  background: var(--gs-gray-100);
+  border: 1px solid var(--gs-gray-30);
+  border-radius: var(--gs-radius);
+  outline: none;
+  transition: border-color var(--gs-duration) var(--gs-ease-in),
+              box-shadow var(--gs-duration) var(--gs-ease-in);
+}
+
+.gs-input:focus,
+.gs-select:focus {
+  border-color: #121212;
+  box-shadow: 0 0 0 2px #121212, inset 0 0 0 1px #fff;
+}
+
+.gs-input::placeholder {
+  color: var(--gs-gray-40);
+}
+
+.gs-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Select wrapper */
+.gs-select-wrap {
+  position: relative;
+}
+
+.gs-select {
+  appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.gs-select-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--gs-text-subtle);
+  pointer-events: none;
+}
+
+/* Input with prefix */
+.gs-input-wrap {
+  position: relative;
+}
+
+.gs-input-prefix {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--gs-text-subtle);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.gs-input--prefixed {
+  padding-left: 28px;
+}
+
+/* ---------- Buttons ---------- */
+.gs-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.gs-btn {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--gs-radius);
+  cursor: pointer;
+  border: none;
+  transition: background var(--gs-duration) var(--gs-ease-in),
+              opacity var(--gs-duration) var(--gs-ease-in);
+  line-height: 1;
+}
+
+.gs-btn--primary {
+  background: var(--gs-brand-blue);
+  color: var(--gs-text-bold);
+}
+
+.gs-btn--primary:hover:not(:disabled) {
+  background: #6589b5;
+}
+
+.gs-btn--primary:active:not(:disabled) {
+  background: #5a7da8;
+}
+
+.gs-btn--primary:focus-visible {
+  outline: 2px solid #121212;
+  outline-offset: 2px;
+}
+
+.gs-btn--primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gs-btn--secondary {
+  background: transparent;
+  color: var(--gs-text-regular);
+  border: 1px solid var(--gs-gray-30);
+}
+
+.gs-btn--secondary:hover {
+  background: var(--gs-gray-10);
+}
+
+/* Button loading */
+.gs-btn-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: var(--gs-text-bold);
+  border-radius: 50%;
+  animation: gs-spin 0.7s linear infinite;
+}
+
+@keyframes gs-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Alert ---------- */
+.gs-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--gs-radius);
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.gs-alert--error {
+  background: #fef2f2;
+  color: var(--gs-error);
+  border: 1px solid #fecaca;
+}
+
+.gs-alert-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ---------- Result Primary ---------- */
+.gs-result-primary {
+  text-align: center;
+  padding: 24px 0 28px;
+}
+
+.gs-result-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gs-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.gs-result-amount {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--gs-text-bold);
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.gs-result-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.gs-result-badge.positive {
+  background: #ecfdf5;
+  color: var(--gs-success);
+}
+
+.gs-result-badge.negative {
+  background: #fef2f2;
+  color: var(--gs-error);
+}
+
+/* ---------- Data Table ---------- */
+.gs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.gs-table tr {
+  border-bottom: 1px solid var(--gs-gray-10);
+}
+
+.gs-table tr:last-child {
+  border-bottom: none;
+}
+
+.gs-table td {
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+.gs-table-label {
+  color: var(--gs-text-subtle);
+  font-weight: 400;
+}
+
+.gs-table-value {
+  text-align: right;
+  color: var(--gs-text-bold);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.gs-positive {
+  color: var(--gs-success) !important;
+}
+
+.gs-negative {
+  color: var(--gs-error) !important;
+}
+
+/* ---------- Methodology ---------- */
+.gs-methodology {
+  margin-top: 20px;
+}
+
+.gs-methodology-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gs-text-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.gs-methodology p {
+  font-size: 13px;
+  color: var(--gs-text-subtle);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.gs-mono {
+  font-family: 'Roboto Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  background: var(--gs-gray-10);
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+.gs-disclaimer {
+  margin-top: 12px !important;
+  font-size: 12px !important;
+  font-style: italic;
+  color: var(--gs-gray-50) !important;
+}
+
+/* ---------- Empty State ---------- */
+.gs-panel--empty {
+  border-style: dashed;
+  border-color: var(--gs-gray-30);
+  background: var(--gs-surface);
+  box-shadow: none;
+}
+
+.gs-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.gs-empty-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gs-gray-40);
+  margin-bottom: 16px;
+}
+
+.gs-empty-text {
+  font-size: 14px;
+  color: var(--gs-gray-50);
+  max-width: 240px;
+}
+
+/* ---------- Footer ---------- */
+.gs-footer {
+  background: var(--gs-gray-90);
+  padding: 32px 0;
+  margin-top: 64px;
+}
+
+.gs-footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.gs-footer-wordmark {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.gs-footer-text {
+  font-size: 12px;
+  color: var(--gs-gray-50);
+}
+
+.gs-footer-legal {
+  margin-left: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .gs-header {
+    padding: 0 24px;
+  }
+
+  .gs-container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gs-header {
+    height: auto;
+    padding: 12px 16px;
+  }
+
+  .gs-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .gs-nav {
+    gap: 20px;
+  }
+
+  .gs-nav-link {
+    padding: 4px 0;
+    font-size: 13px;
+  }
+
+  .gs-container {
+    padding: 0 16px;
+  }
+
+  .gs-title {
+    font-size: 24px;
+  }
+
+  .gs-page-title {
+    padding: var(--gs-space-md) 0 var(--gs-space-sm);
+  }
+
+  .gs-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gs-result-amount {
+    font-size: 28px;
+  }
+
+  .gs-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .gs-footer-legal {
+    margin-left: 0;
+  }
+
+  .gs-methodology-steps {
+    grid-template-columns: 1fr;
+  }
+}

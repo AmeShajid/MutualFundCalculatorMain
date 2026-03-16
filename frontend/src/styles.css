@@ -1,0 +1,81 @@
+/* Goldman Sachs Design System — Global Tokens */
+
+:root {
+  /* Brand */
+  --gs-brand-blue: #7399C6;
+  --gs-navy: #092C61;
+  --gs-ebony: #22263F;
+  --gs-action-blue: #186ADE;
+
+  /* Neutrals (GS gray scale) */
+  --gs-gray-100: #FFFFFF;
+  --gs-gray-90: #1C2B36;
+  --gs-gray-80: #2A3F4D;
+  --gs-gray-70: #3E5463;
+  --gs-gray-60: #5B7282;
+  --gs-gray-50: #7A909E;
+  --gs-gray-40: #9FB1BD;
+  --gs-gray-30: #C1CCD6;
+  --gs-gray-20: #DCE3E8;
+  --gs-gray-10: #F2F5F7;
+
+  /* Surfaces */
+  --gs-surface: #F7F7FA;
+  --gs-surface-regular: #DCDCE0;
+
+  /* Text (GS rgba) */
+  --gs-text-bold: rgba(0, 0, 0, 0.95);
+  --gs-text-regular: rgba(0, 0, 0, 0.80);
+  --gs-text-subtle: rgba(0, 0, 0, 0.70);
+
+  /* Semantic */
+  --gs-success: #077D55;
+  --gs-error: #D91F11;
+  --gs-warning: #B2570D;
+
+  /* Elevation */
+  --gs-shadow-10: 0px 4px 4px rgba(0, 0, 0, 0.04);
+  --gs-shadow-20: 0px 4px 8px rgba(0, 0, 0, 0.08);
+  --gs-shadow-30: 0px 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* Spacing (8px base) */
+  --gs-space-xs: 8px;
+  --gs-space-sm: 16px;
+  --gs-space-md: 32px;
+  --gs-space-lg: 48px;
+  --gs-space-xl: 64px;
+
+  /* Radius */
+  --gs-radius: 4px;
+
+  /* Transitions */
+  --gs-ease-in: cubic-bezier(0.32, 0.94, 0.60, 1.00);
+  --gs-duration: 200ms;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--gs-gray-100);
+  color: var(--gs-text-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
