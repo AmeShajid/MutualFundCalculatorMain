@@ -152,11 +152,11 @@
           <tbody>
             <tr>
               <td class="gs-table-label">Initial Investment</td>
-              <td class="gs-table-value">{{ formatCurrency(principal!) }}</td>
+              <td class="gs-table-value">{{ formatCurrency(submittedPrincipal!) }}</td>
             </tr>
             <tr>
               <td class="gs-table-label">Net Gain / (Loss)</td>
-              <td class="gs-table-value" [class.gs-positive]="result.futureValue - principal! >= 0" [class.gs-negative]="result.futureValue - principal! < 0">{{ formatCurrency(result.futureValue - principal!) }}</td>
+              <td class="gs-table-value" [class.gs-positive]="result.futureValue - submittedPrincipal! >= 0" [class.gs-negative]="result.futureValue - submittedPrincipal! < 0">{{ formatCurrency(result.futureValue - submittedPrincipal!) }}</td>
             </tr>
             <tr>
               <td class="gs-table-label">Beta (β)</td>
@@ -172,7 +172,7 @@
             </tr>
             <tr>
               <td class="gs-table-label">Investment Period</td>
-              <td class="gs-table-value">{{ years }} {{ years === 1 ? 'Year' : 'Years' }}</td>
+              <td class="gs-table-value">{{ submittedYears }} {{ submittedYears === 1 ? 'Year' : 'Years' }}</td>
             </tr>
           </tbody>
         </table>
