@@ -7,8 +7,8 @@
       <span class="gs-header-section">Engineering Summer</span>
     </div>
     <nav class="gs-nav">
-      <a class="gs-nav-link" [class.active]="!showMethodology" (click)="showMethodology = false">Calculator</a>
-      <a class="gs-nav-link" [class.active]="showMethodology" (click)="showMethodology = !showMethodology">Methodology</a>
+      <button type="button" class="gs-nav-link" [class.active]="!showMethodology" (click)="showMethodology = false">Calculator</button>
+      <button type="button" class="gs-nav-link" [class.active]="showMethodology" (click)="showMethodology = !showMethodology">Methodology</button>
     </nav>
   </div>
 </header>
